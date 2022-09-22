@@ -28,17 +28,13 @@ public class Locators {
         driver.findElement(By.id("search_query_top")).sendKeys("test" + Keys.ENTER);
         driver.navigate().back();
 
-        List<WebElement> elements = driver.findElements(By.cssSelector("#blockbestsellers .price.product-price"));
+        List<WebElement> elements = driver.findElements(By.cssSelector("#blockbestsellers div.right-block div.content_price span[class=\"price product-price\"]"));
 
-        for (WebElement e : elements) {
-            System.out.println(e.getText());
-        }
+        String lblFirstElement = elements.get(0).getText();
+        String lblLastElement = elements.get(elements.size() - 1).getText();
 
-        String txtFirstElement = elements.get(1).getText();
-        String txtLastElement = elements.get(elements.size() - 1).getText();
-
-        System.out.println(txtFirstElement);
-        System.out.println(txtLastElement);
+        System.out.println(lblFirstElement);
+        System.out.println(lblLastElement);
 
         driver.quit();
     }
